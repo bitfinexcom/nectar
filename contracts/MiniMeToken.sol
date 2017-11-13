@@ -231,7 +231,8 @@ contract MiniMeToken is Controlled {
           require(parentSnapShotBlock < block.number);
 
           // Do not allow transfer to 0x0 or the token contract itself
-          require((_to != 0) && (_to != address(this)));
+       //Also Check for short address attack http://vessenes.com/the-erc20-short-address-attack-explained/
+          require((_to != 0) && (_to != address(this)) && (_from != to));
 
           // If the amount being transfered is more than the balance of the
           //  account the transfer returns false
