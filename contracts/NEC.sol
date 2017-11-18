@@ -39,7 +39,7 @@ contract NEC is MiniMeToken {
     function burnAndRetrieve(uint256 _tokensToBurn) returns (bool success) {
         require(burningEnabled);
 
-        var previousBalanceFrom = balanceOfAt(msg.sender, block.number);
+        uint256 previousBalanceFrom = balanceOfAt(msg.sender, block.number);
         if (previousBalanceFrom < _tokensToBurn) {
             return false;
         }

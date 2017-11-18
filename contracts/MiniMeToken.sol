@@ -235,7 +235,7 @@ contract MiniMeToken is Controlled {
 
           // If the amount being transfered is more than the balance of the
           //  account the transfer returns false
-          var previousBalanceFrom = balanceOfAt(_from, block.number);
+          uint previousBalanceFrom = balanceOfAt(_from, block.number);
           if (previousBalanceFrom < _amount) {
               return false;
           }
@@ -251,7 +251,7 @@ contract MiniMeToken is Controlled {
 
           // Then update the balance array with the new value for the address
           //  receiving the tokens
-          var previousBalanceTo = balanceOfAt(_to, block.number);
+          uint previousBalanceTo = balanceOfAt(_to, block.number);
           require(previousBalanceTo + _amount >= previousBalanceTo); // Check for overflow
           updateValueAtNow(balances[_to], previousBalanceTo + _amount);
 
